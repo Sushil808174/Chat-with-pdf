@@ -1,0 +1,48 @@
+.display-part{
+    width: 100%;
+}
+.main-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.left-bar{
+    background-color: #0D0D0D;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    border: 2px solid black;
+}
+.main-bar{
+    background-color: #242B2E;
+    width: 80%;
+    min-height: 100vh;
+    position: relative;
+    left: 20%;
+    right: 0;
+    top: 0;
+    border: 2px solid black;
+}
+.new-chat{
+    color: white;
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid rgb(185, 185, 185);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.header{
+    color: rgb(174, 174, 174);
+    width: 200px;
+    margin: 10px auto;
+    padding: 5px 10px;
+    border: 1px solid rgb(128, 128, 128);
+    text-align: center;
+    border-radius: 10px;
+}
+.pdf-upload{
+    width: 70%;
+    margin: auto;
+}

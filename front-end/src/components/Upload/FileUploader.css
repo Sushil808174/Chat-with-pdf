@@ -1,0 +1,36 @@
+.file-uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .file-drop-area {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    color: white;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #1d1d1d;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .upload-btn{
+    position: absolute;
+    top: 170px;
+    color: white;
+    width: 85px;
+    height: 40px;
+    padding: 5px 10px;
+    background-color: #1d1d1d;
+    border: 2px solid #758283;
+    border-radius: 10px;
+  }
+  .upload-btn:hover{
+    background-color: #758283;
+  }
