@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Register.css'; // Import your custom CSS for styling
+import React, { useState } from "react";
+import axios from "axios";
+import "./Register.css"; // Import your custom CSS for styling
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
+    // phone: "",
+    // address: "",
   });
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/register', formData);
-      // Handle response and redirect or show a success message
+      const response = await axios.post(
+        "http://localhost:8000/register/",
+        formData
+      );
+      // Assuming your backend returns a success message upon successful registration
+      if (response.data.message === "User registered successfully") {
+        // Display a success message to the user
+        console.log("Registration successful");
+      }
     } catch (error) {
       // Handle error and display error message
+      console.error("Registration failed", error.response.data.message);
     }
   };
 
@@ -30,7 +40,9 @@ const Register = () => {
               type="text"
               placeholder="Enter your username"
               value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, username: e.target.value })
+              }
             />
           </div>
           <div className="input-group">
@@ -39,7 +51,9 @@ const Register = () => {
               type="email"
               placeholder="Enter your email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
           </div>
           <div className="input-group">
@@ -48,28 +62,36 @@ const Register = () => {
               type="password"
               placeholder="Enter your password"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
           </div>
-          <div className="input-group">
+          {/* <div className="input-group">
             <label>Mobile no.</label>
             <input
               type="text"
               placeholder="Enter your mobile no."
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
             />
           </div>
           <div className="input-group">
             <label>Address</label>
             <input
               type="text"
-              placeholder="Enter your address"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              placeholder="Enter your address."
+              value={formData.address}
+              onChange={(e) =>
+                setFormData({ ...formData, address: e.target.value })
+              }
             />
-          </div>
-          <button type="submit" className="register-button">Register</button>
+          </div> */}
+          <button type="submit" className="register-button">
+            Register
+          </button>
         </form>
       </div>
     </div>

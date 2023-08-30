@@ -4,17 +4,23 @@ import './Login.css'; // Import your custom CSS for styling
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
   });
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', formData);
-      // Handle response and redirect or show a success message
+      const response = await axios.post('http://localhost:8000/login/', formData);
+      // Assuming your backend returns a token upon successful login
+      if (response.data.token) {
+        // Save the token to local storage or state for future requests
+        // Redirect the user or perform any other action
+        console.log('Login successful');
+      }
     } catch (error) {
       // Handle error and display error message
+      console.error('Login failed', error.response.data.message);
     }
   };
 
@@ -24,12 +30,12 @@ const Login = () => {
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label>Email</label>
+            <label>Username</label>
             <input
-              type="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              type="text"
+              placeholder="Enter your username"
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             />
           </div>
           <div className="input-group">
