@@ -1,0 +1,20 @@
+.pdfhistory{
+    border-radius:10px ;
+}
+
+.eachPdf{
+    color: white;
+    height: 3rem;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    /* background-color: red; */
+}
+.eachPdf:hover{
+    background-color: rgb(50, 50, 50);
+}

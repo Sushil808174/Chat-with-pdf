@@ -1,18 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './PdfHistory.css';
 
-const PdfHistory = ({ pdfDocuments }) => {
+function PdfHistory() {
+  const [pdfHistory, setPDFHistory] = useState([]);
+  const [selectedPDF, setSelectedPDF] = useState(null);
+  const [pdfId, setPdfId] = useState();
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/pdf-history/')
+      .then(response => {
+        setPDFHistory(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching PDF history:', error);
+      });
+  }, []);
+
+  const handlePDFClick = (pdf) => {
+    setPdfId(pdf.id);
+    axios.get(`http://localhost:8000/pdf/${pdfId}/`)
+      .then(response => {
+        console.log(response.data.message)
+      })
+      .catch(error => {
+        console.error('Error fetching questions and answers:', error);
+      });
+  };
+
   return (
-    <div>
-      <h2>PDF History</h2>
-      <ul>
-        {pdfDocuments.map((pdf, index) => (
-          <li key={index}>
-            Title: {pdf.title}, Uploaded By: {pdf.uploadedBy.username}
-          </li>
-        ))}
-      </ul>
+    <div className="pdfhistory">
+      {/* <h2>PDF History</h2> */}
+      {pdfHistory.map((entry, index) => (
+        <div key={entry.id} onClick={() => handlePDFClick(entry)} className="eachPdf">
+          <p>{entry.title}</p>
+          {/* Add more details about the PDF if needed */}
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default PdfHistory;

@@ -4,26 +4,39 @@ import './FileUploader.css'
 
 function FileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [val,setVal] = useState('')
   const fileInputRef = useRef(null); // Use useRef to create a ref
 
   const handleDrop = event => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     setSelectedFile(file);
+    setVal(file.name)
     console.log(file)
   };
 
   const handleFileChange = event => {
     const file = event.target.files[0];
+    setVal(file.name)
     setSelectedFile(file);
   };
+  const Value=()=>{
+    
+      if(val){
+        return val;
+      }else{
+        return "Drag and drop a file here"
+      }
+    
+  }
 
   const handleUpload = () => {
     if (selectedFile) {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      console.log(formData)
-      axios.post('/api/upload/', formData)
+      formData.append('title',val)
+      console.log(selectedFile)
+      axios.post('http://localhost:8000/upload-pdf/', formData)
         .then(response => {
           // Handle successful upload
         })
@@ -42,7 +55,8 @@ function FileUploader() {
         onDragEnter={event => event.preventDefault()}
         onClick={() => fileInputRef.current.click()}
       >
-        Drag and drop a file here
+        <Value />
+        
       </div>
       <input
         type="file"

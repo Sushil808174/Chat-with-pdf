@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
-import QuestionAnswer from './QuestionAnswer';
+// import QuestionAnswer from './QuestionAnswer';
 
 const SearchPage = () => {
   const [searchResults, setSearchResults] = useState([]);

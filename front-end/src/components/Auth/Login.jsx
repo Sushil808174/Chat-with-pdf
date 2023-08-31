@@ -10,17 +10,16 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("Sending request:", formData); // Print the request data before sending
     try {
-      const response = await axios.post('http://localhost:8000/login/', formData);
-      // Assuming your backend returns a token upon successful login
-      if (response.data.token) {
-        // Save the token to local storage or state for future requests
-        // Redirect the user or perform any other action
-        console.log('Login successful');
+      const response = await axios.post("http://localhost:8000/login/", formData);
+      console.log("Response:", response.data); // Print the response data received from the server
+      if ('token' in response.data) {
+        localStorage.setItem('token',JSON.stringify(response.data.token))
+        console.log("Login successful");
       }
     } catch (error) {
-      // Handle error and display error message
-      console.error('Login failed', error.response.data.message);
+      console.error("Login failed:", error.response.data);
     }
   };
 
@@ -32,8 +31,8 @@ const Login = () => {
           <div className="input-group">
             <label>Username</label>
             <input
-              type="text"
-              placeholder="Enter your username"
+              type="username"
+              placeholder="Enter your email"
               value={formData.username}
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             />
