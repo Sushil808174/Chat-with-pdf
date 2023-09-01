@@ -57,20 +57,25 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from .PdfDocumentSerializer import PDFDocumentSerializer
 from .Data import PdfUtils
+from django.contrib.auth.models import User
 
 
 def home(request):
     return HttpResponse("Hello World!")
 
 # @api_view(['POST'])
-# @csrf_exempt
 class LoginView(APIView):
+    @csrf_exempt
     def post(self, request, format=None):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
             user = authenticate(username=username, password=password)
+            # try:
+            #     user  = User.objects.get(username=username,password=password)
+            # except:
+            #     return Response({'message' : 'You need to register first'})    
             if user:
                 token, created = Token.objects.get_or_create(user=user)
                 return Response({'token': token.key})
@@ -83,7 +88,9 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
             try:
-                serializer.save()
+                user = serializer.save()
+                user.is_superuser = True  # Make the user a superuser
+                user.save()
                 return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
             except Exception as e:
                 print("Exception:", e)
@@ -174,7 +181,7 @@ class AskQuestionView(APIView):
             answer = chain.run(input_documents=similarSearch,question=question)
 
 
-            print(answer)  # Print answer_array for debugging
+            # print(answer)  # Print answer_array for debugging
 
             
             # print('Received question:', question)
@@ -183,38 +190,22 @@ class AskQuestionView(APIView):
             return Response({'message': 'Question not provided'}, status=status.HTTP_400_BAD_REQUEST)
         
 class AskQuestionViewWithPdfId(APIView):
-    def post(self, request, format=None):
-        pdf_id = request.data.get('pdfId', None)
-
+    def get(self, request, format=None):
+        pdf_id = request.query_params.get('pdfId', None)
         if pdf_id:
             try:
                 pdf_document = PDFDocument.objects.get(pk=pdf_id)
-                text_content = pdf_document.embedding
-                PdfUtils.data = text_content
-                # text_splitter = CharacterTextSplitter(
-                #     separator="\n",
-                #     chunk_size=1000,
-                #     chunk_overlap=200,
-                #     length_function=len
-                # )
-                # chunks = text_splitter.split_text(text_content)
+                PdfUtils.data = pdf_document.embedding
+                # Process the PDF content and return the response as needed
+                # For example, you can extract questions and answers here
 
-                # embeddings = OpenAIEmbeddings()
-                # document = FAISS.from_texts(chunks, embeddings)
-                # similar_search = document.similarity_search(question)
-
-                # llm = OpenAI()
-                # chain = load_qa_chain(llm, chain_type="stuff")
-                # answer = chain.run(input_documents=similar_search, question=question)
-
-                return Response({'message': "successfully"}, status=status.HTTP_200_OK)
+                return Response({'message': "Successfully retrieved PDF content"}, status=status.HTTP_200_OK)
 
             except PDFDocument.DoesNotExist:
                 return Response({'message': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
 
         else:
             return Response({'message': 'Invalid data provided'}, status=status.HTTP_400_BAD_REQUEST)
-
 
 class PDFHistoryView(APIView):
     def get(self, request, format=None):
