@@ -2,14 +2,7 @@ import React from 'react';
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ChatUI from './components/Display/ChatUI';
-import ChatList from './components/Chat/ChatList';
-import MessageInput from './components/Chat/MessageInput';
-import PdfUpload from './components/Upload/PdfUpload';
-import PdfProcessing from './components/Upload/PdfProcessing';
-import QuestionAnswer from './components/Search/QuestionForm';
-import MessageHistory from './components/UserHistory/MessageHistory';
 import PdfHistory from './components/UserHistory/PdfHistory';
-import UserHistoryPage from './components/UserHistory/UserHistoryPage';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login'
 import Profile from './components/Auth/Profile';
@@ -20,14 +13,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' exact element={<ChatUI />} />
-        <Route path="/chats" element={<ChatList />} />
-        <Route path="/chats/:chatId" element={<MessageInput />} />
-        <Route path="/upload" element={<PdfUpload />} />
-        <Route path="/process" element={<PdfProcessing />} />
         <Route path="/answer/:question" element={<QuestionForm />} />
-        <Route path="/history/messages" element={<MessageHistory />} />
         <Route path="/history/pdfs" element={<PdfHistory />} />
-        <Route path="/user/history" element={<UserHistoryPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />

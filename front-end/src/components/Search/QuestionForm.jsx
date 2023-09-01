@@ -27,9 +27,10 @@ function QuestionForm() {
     if (event.keyCode === 13) {
       event.preventDefault(); // Prevent default "Enter" behavior
       handleQuestionSubmit();
+      
     }
   };
-
+  
   return (
     <div className='main'>
       <div className="searchbar">

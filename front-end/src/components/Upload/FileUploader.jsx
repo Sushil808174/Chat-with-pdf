@@ -4,7 +4,7 @@ import './FileUploader.css'
 
 function FileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [val,setVal] = useState('')
+  const [val,setVal] = useState(JSON.parse(localStorage.getItem('title')) | '')
   const fileInputRef = useRef(null); // Use useRef to create a ref
 
   const handleDrop = event => {
