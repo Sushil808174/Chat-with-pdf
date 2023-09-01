@@ -19,14 +19,15 @@ function PdfHistory() {
 
   const handlePDFClick = (pdf) => {
     setPdfId(pdf.id);
-    axios.get(`http://localhost:8000/pdf/${pdfId}/`)
+    axios.get(`http://localhost:8000/ask-question-withId/?pdfId=${pdf.id}`)
       .then(response => {
-        console.log(response.data.message)
+        console.log(response.data.message);
       })
       .catch(error => {
         console.error('Error fetching questions and answers:', error);
       });
   };
+
 
   return (
     <div className="pdfhistory">
