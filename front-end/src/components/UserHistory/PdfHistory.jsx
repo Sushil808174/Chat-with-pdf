@@ -6,7 +6,7 @@ function PdfHistory() {
   const [pdfHistory, setPDFHistory] = useState([]);
   const [selectedPDF, setSelectedPDF] = useState(null);
   const [pdfId, setPdfId] = useState();
-  
+  const [t , setT] = useState(false)
   useEffect(() => {
     axios.get('http://localhost:8000/pdf-history/')
       .then(response => {
@@ -15,18 +15,24 @@ function PdfHistory() {
       .catch(error => {
         console.error('Error fetching PDF history:', error);
       });
-  }, []);
+  }, [t]);
   const handlePDFClick = (pdf) => {
     setPdfId(pdf.id);
+    console.log(t)
     axios.get(`http://localhost:8000/ask-question-withId/?pdfId=${pdf.id}`)
       .then(response => {
         localStorage.setItem('title',JSON.stringify(response.data.title))
+        window.location.reload()
+        console.log(t)
         console.log(response.data.message);
         console.log(response.data.title);
       })
       .catch(error => {
         console.error('Error fetching questions and answers:', error);
       });
+
+      setT(()=>true)
+      console.log("after catch",t)
   };
 
 

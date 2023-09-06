@@ -1,10 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import './FileUploader.css'
 
 function FileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [val,setVal] = useState(JSON.parse(localStorage.getItem('title')) | '')
+  const [val,setVal] = useState('')
+  
+  useEffect(()=>{
+    setVal(()=>JSON.parse(localStorage.getItem('title')))
+    
+  },[])
+
+  useEffect(()=>{
+    
+    console.log(1)
+  },[])
+
+
+
   const fileInputRef = useRef(null); // Use useRef to create a ref
 
   const handleDrop = event => {

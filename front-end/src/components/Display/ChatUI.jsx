@@ -5,11 +5,18 @@ import QuestionForm from '../Search/QuestionForm';
 import PdfHistory from '../UserHistory/PdfHistory';
 
 function ChatUI() {
+
+  const handleNewChat=()=>{
+    localStorage.clear();
+    window.location.reload();
+  }
+
+
   return (
     <div className="display-part">
       <div className="main-div">
         <div className="left-bar">
-            <div className="new-chat"><b style={{marginRight:'3px'}}>+</b>New chat</div>
+            <div className="new-chat" onClick={handleNewChat}><b style={{marginRight:'3px'}}>+</b>New chat</div>
             <div className='History'>
               <PdfHistory />
             </div>
