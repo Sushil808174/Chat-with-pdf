@@ -135,6 +135,7 @@ def upload_pdf(request):
             )
             print(pdf_content)
             print("pdf success")
+            
             return Response({'message': 'PDF uploaded successfully'})
         else:
             print("pdf not find")
