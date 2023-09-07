@@ -11,3 +11,10 @@ Chat-with-PDF is an innovative web application that combines AI and Django to pr
 - User-Friendly Interface: A clean and intuitive UI for a hassle-free experience.
 - User Authentication: Ensure that only registered users can access the application.
 - Secure Data Storage: Safely store your PDFs and access them when needed.
+
+
+## Usage
+- Register: Create an account to access the application.
+- Upload PDFs: Upload your PDF documents to the system.
+- Ask Questions: Use the chat interface to ask questions related to the PDF content.
+- Get Answers: The system will provide answers based on the content of the PDFs.
