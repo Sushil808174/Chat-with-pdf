@@ -135,7 +135,7 @@ def upload_pdf(request):
             )
             print(pdf_content)
             print("pdf success")
-            
+
             return Response({'message': 'PDF uploaded successfully'})
         else:
             print("pdf not find")
@@ -216,6 +216,7 @@ class PDFHistoryView(APIView):
         pdf_history = []
 
         for pdf_document in pdf_documents:
+            
             serializer = PDFDocumentSerializer(pdf_document)
             pdf_entry = {
                 'id': pdf_document.id,
