@@ -32,11 +32,18 @@ Chat-with-PDF is an innovative web application that combines AI and Django to pr
 
 ### Frontend (React)
 
-The frontend of Chat-with-PDF is built using React, a popular JavaScript library for building user interfaces. Follow these steps to set up and run the React frontend:
+**Prerequisites
 
-1. **Navigate to the Frontend Directory:** Open your terminal and navigate to the `frontend` directory of the project.
+Before you begin, ensure you have met the following requirements:
 
-2. **Install Dependencies:** Run the following command to install the necessary dependencies:
+- **Node.js and npm:** Make sure you have Node.js and npm (Node Package Manager) installed on your system. You can download them from [nodejs.org](https://nodejs.org/).
+
+### Installation
+
+1. **Clone the Repository:** Clone this repository to your local machine using:
+
+   ```shell
+   git clone https://github.com/your-username/Chat-with-PDF.git
 
 
     
