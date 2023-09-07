@@ -21,9 +21,22 @@ Chat-with-PDF is an innovative web application that combines AI and Django to pr
 
 
 ## Getting Started
-**Prerequisites: Ensure you have Python and Django installed on your system.
-- Clone the Repository: `git clone https://github.com/YourUsername/Chat-with-PDF.git`
-- Install Dependencies: `pip install -r requirements.txt`
-- Run Migrations: `python manage.py migrate`
-- Start the Development Server: `python manage.py runserver`
-- Access the Application: Open your browser and go to `http://localhost:8000`.
+### Backend
+  **Prerequisites: Ensure you have Python and Django installed on your system.
+  - Clone the Repository: `git clone https://github.com/YourUsername/Chat-with-PDF.git`
+  - Install Dependencies: `pip install -r requirements.txt`
+  - Run Migrations: `python manage.py migrate`
+  - Start the Development Server: `python manage.py runserver`
+  - Access the Application: Open your browser and go to `http://localhost:8000`.
+
+
+### Frontend (React)
+
+The frontend of Chat-with-PDF is built using React, a popular JavaScript library for building user interfaces. Follow these steps to set up and run the React frontend:
+
+1. **Navigate to the Frontend Directory:** Open your terminal and navigate to the `frontend` directory of the project.
+
+2. **Install Dependencies:** Run the following command to install the necessary dependencies:
+
+
+    
