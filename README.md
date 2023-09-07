@@ -18,3 +18,12 @@ Chat-with-PDF is an innovative web application that combines AI and Django to pr
 - Upload PDFs: Upload your PDF documents to the system.
 - Ask Questions: Use the chat interface to ask questions related to the PDF content.
 - Get Answers: The system will provide answers based on the content of the PDFs.
+
+
+## Getting Started
+**Prerequisites: Ensure you have Python and Django installed on your system.
+- Clone the Repository: `git clone https://github.com/YourUsername/Chat-with-PDF.git`
+- Install Dependencies: `pip install -r requirements.txt`
+- Run Migrations: `python manage.py migrate`
+- Start the Development Server: `python manage.py runserver`
+- Access the Application: Open your browser and go to `http://localhost:8000`.
