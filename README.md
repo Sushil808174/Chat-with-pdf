@@ -56,4 +56,6 @@ Before you begin, ensure you have met the following requirements:
    ```shell
    npm start   
 
-    
+5. Access the React Frontend: Open your web browser and go to http://localhost:3000. You'll now be able to use the React-based user interface to interact with the Chat-with-PDF application.
+
+** Please note that both the frontend and backend servers should be running simultaneously for the full functionality of the application.   
