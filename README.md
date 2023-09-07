@@ -59,3 +59,7 @@ Before you begin, ensure you have met the following requirements:
 5. Access the React Frontend: Open your web browser and go to http://localhost:3000. You'll now be able to use the React-based user interface to interact with the Chat-with-PDF application.
 
 ** Please note that both the frontend and backend servers should be running simultaneously for the full functionality of the application.   
+
+For front-end you can click here:
+```shell
+https://chat-with-pdf-69c3.vercel.app/
