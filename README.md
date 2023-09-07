@@ -45,5 +45,15 @@ Before you begin, ensure you have met the following requirements:
    ```shell
    git clone https://github.com/your-username/Chat-with-PDF.git
 
+2. Navigate to the Frontend Directory: Open your terminal and navigate to the frontend directory within the cloned project:
+
+   ```shell
+   cd Chat-with-PDF/front-end
+3. Install Dependencies: Install the required dependencies by running:
+   ```shell
+   npm install
+4. Start the Development Server: To run the React frontend, use the following command:
+   ```shell
+   npm start   
 
     
