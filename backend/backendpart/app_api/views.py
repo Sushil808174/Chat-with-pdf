@@ -123,7 +123,7 @@ def upload_pdf(request):
                 text_content += page.extract_text()
             # print("this is text ==========================",text_content)
             PdfUtils.data = text_content
-
+            print(PdfUtils.data)
             # Convert pdf_content to text and process as needed
             # For example, you can use libraries like PyMuPDF or pdf2txt to extract text
             
@@ -163,7 +163,7 @@ class AskQuestionView(APIView):
 
         if question:
             load_dotenv()
-            # print("before divide into chunks", PdfUtils.data)
+            print("before divide into chunks", PdfUtils.data)
             text_splitter = CharacterTextSplitter(
                 separator="\n",
                 chunk_size = 1000,
@@ -175,7 +175,7 @@ class AskQuestionView(APIView):
             embeddings = OpenAIEmbeddings()
             document = FAISS.from_texts(chunks,embeddings)
             similarSearch = document.similarity_search(question)
-            # print(similarSearch)
+            print(similarSearch)
             llm = OpenAI()
             chain = load_qa_chain(llm,chain_type="stuff")
             answer = chain.run(input_documents=similarSearch,question=question)
@@ -196,10 +196,12 @@ class AskQuestionViewWithPdfId(APIView):
             try:
                 pdf_document = PDFDocument.objects.get(pk=pdf_id)
                 PdfUtils.data = pdf_document.embedding
+                print("this is history click event ")
+                print(PdfUtils.data)
                 # Process the PDF content and return the response as needed
                 # For example, you can extract questions and answers here
 
-                return Response({'message': "Successfully retrieved PDF content"}, status=status.HTTP_200_OK)
+                return Response({'message': "Successfully retrieved PDF content",'title':pdf_document.title}, status=status.HTTP_200_OK)
 
             except PDFDocument.DoesNotExist:
                 return Response({'message': 'PDF not found'}, status=status.HTTP_404_NOT_FOUND)
