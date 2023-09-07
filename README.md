@@ -60,6 +60,4 @@ Before you begin, ensure you have met the following requirements:
 
 ** Please note that both the frontend and backend servers should be running simultaneously for the full functionality of the application.   
 
-For front-end you can click here:
-```shell
-https://chat-with-pdf-69c3.vercel.app/
+For front-end you can click here: https://chat-with-pdf-69c3.vercel.app/
